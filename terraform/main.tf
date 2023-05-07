@@ -42,9 +42,7 @@ module "management_cluster" {
   enable_maintenance_window = false
   image_cleaner_enabled     = true
 
+  tags = local.tags
+
 }
 
-output "cluster" {
-  value     = module.management_cluster.azurerm_kubernetes_cluster.kube_config
-  sensitive = true
-}

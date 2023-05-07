@@ -3,6 +3,7 @@ resource "azurerm_virtual_network" "management_cluster" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.management_cluster.location
   resource_group_name = azurerm_resource_group.management_cluster.name
+  tags                = local.tags
 }
 
 resource "azurerm_subnet" "management_cluster" {
@@ -16,4 +17,5 @@ resource "azurerm_subnet" "management_cluster" {
 resource "azurerm_dns_zone" "worldofcontainers_tk" {
   name                = "worldofcontainers.tk"
   resource_group_name = azurerm_resource_group.management_cluster.name
+  tags                = local.tags
 }

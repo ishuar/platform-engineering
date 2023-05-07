@@ -1,0 +1,32 @@
+# -- Deploy Argo CD Applications within this helm release
+## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
+applications:
+  sources:
+   - repoURL: https://github.com/ishuar/platform-engineering.git
+     path: argocd
+     targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  revisionHistoryLimit: null
+  ignoreDifferences:
+  info:
+  - name: 'url_for_readme'
+    value: https://argoproj.github.io/
+
+# -- Deploy Argo CD Projects within this helm release
+## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
+projects:
+- name: platform-engineering
+  namespace: argocd
+  additionalLabels:
+    github_repo: "github.com/ishuar/platform-engineering"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  description: Project for all applications involved in the platform-engineering project.
+  sourceRepos:
+  - 'https://github.com/ishuar/platform-engineering.git'

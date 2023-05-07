@@ -1,0 +1,35 @@
+global:
+  image:
+    tag: v2.7.1
+server:
+  ## Server metrics service configuration
+  metrics:
+    # -- Deploy metrics service
+    enabled: false
+    serviceMonitor:
+      # -- Enable a prometheus ServiceMonitor
+      enabled: false
+  ingress:
+    # -- Enable an ingress resource for the Argo CD server
+    enabled: false
+    # -- Additional ingress annotations
+    annotations: {}
+    # -- Defines which ingress controller will implement the resource
+    ingressClassName: nginx
+    # -- List of ingress hosts
+    ## Argo Ingress.
+    ## Hostnames must be provided if Ingress is enabled.
+    ## Secrets must be manually created in the namespace
+    hosts: []
+    tls: []
+      # - secretName: your-certificate-name
+      #   hosts:
+      #     - argocd.worldofcontainers.tk
+## ApplicationSet controller
+applicationSet:
+  # -- Enable ApplicationSet controller
+  enabled: false
+## Notifications controller
+notifications:
+  # -- Enable notifications controller
+  enabled: false

@@ -1,0 +1,10 @@
+provider: azure
+azure:
+  secretName: external-dns-secret-cluster
+rbac:
+  clusterRole: true
+  create: true
+sources:
+  - ingress
+domainFilters:
+  - worldofcontainers.tk

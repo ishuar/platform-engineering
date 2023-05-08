@@ -6,10 +6,10 @@ applications:
 - name: platform-engineering
   namespace: argocd
   project: default
-  sources:
-   - repoURL: https://github.com/ishuar/platform-engineering.git
-     path: argocd
-     targetRevision: HEAD
+  source:
+    repoURL: https://github.com/ishuar/platform-engineering.git
+    path: argocd
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -20,7 +20,7 @@ applications:
   revisionHistoryLimit: null
   ignoreDifferences:
   info:
-  - name: 'url_for_readme'
+  - name: 'README'
     value: https://github.com/ishuar/platform-engineering/blob/main/argocd/README.md
 
 # -- Deploy Argo CD Projects within this helm release
@@ -28,8 +28,10 @@ applications:
 projects:
 - name: platform-engineering
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
   description: Project for all applications involved in the platform-engineering tasks.
   sourceRepos:
   - 'https://github.com/ishuar/platform-engineering.git'
+  destinations:
+   - server: https://kubernetes.default.svc
+  sourceNamespaces:
+   - argocd

@@ -1,3 +1,7 @@
+## Chart source: https://artifacthub.io/packages/helm/argo/argo-cd
+configs:
+  params:
+    server.insecure: true
 global:
   image:
     tag: v2.7.1
@@ -11,16 +15,20 @@ server:
       enabled: false
   ingress:
     # -- Enable an ingress resource for the Argo CD server
-    enabled: false
+    enabled: true
     # -- Additional ingress annotations
-    annotations: {}
+    # -- Required with kubernetesingress-nginx controller, ref:  https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#kubernetesingress-nginx
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     # -- Defines which ingress controller will implement the resource
     ingressClassName: nginx
     # -- List of ingress hosts
     ## Argo Ingress.
     ## Hostnames must be provided if Ingress is enabled.
     ## Secrets must be manually created in the namespace
-    hosts: []
+    hosts:
+      - argocd.worldofcontainers.tk
     tls: []
       # - secretName: your-certificate-name
       #   hosts:
@@ -33,3 +41,10 @@ applicationSet:
 notifications:
   # -- Enable notifications controller
   enabled: false
+crds:
+  # -- Install and upgrade CRDs
+  install: true
+  # -- Keep CRDs on chart uninstall
+  # -- remove as the terraform is not able to install again if release is uninstalled and crds are left.
+  keep: false
+

@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "management_cluster" {
-  name     = "rg-aks-management_cluster-${local.tags["github_repo"]}"
+  name     = "rg-aks-mgmt-${local.tags["github_repo"]}"
   location = "West Europe"
   tags     = local.tags
 }
@@ -11,10 +11,9 @@ module "management_cluster" {
 
   location            = azurerm_resource_group.management_cluster.location
   resource_group_name = azurerm_resource_group.management_cluster.name
-  name                = "management-cluster-${local.tags["github_repo"]}"
+  name                = "mgmt-cluster-${local.tags["github_repo"]}"
   dns_prefix          = "managementcluster"
   kubernetes_version  = "1.26.3"
-  node_resource_group = "rg-node-${local.tags["github_repo"]}"
 
   ## Default node pool
   default_node_pool_name                = "system"
@@ -28,21 +27,19 @@ module "management_cluster" {
   vnet_subnet_id      = azurerm_subnet.management_cluster.id
   network_plugin      = "azure"
   network_plugin_mode = "Overlay"
-  service_cidr        = "100.0.0.0/16"
-  dns_service_ip      = "100.0.0.10"
+  service_cidrs       = ["100.1.0.0/16"]
+  pod_cidrs           = ["100.2.0.0/16"]
+  dns_service_ip      = "100.1.0.100"
 
   ## Storage profile
   blob_driver_enabled         = true
   disk_driver_enabled         = true
   disk_driver_version         = "v1"
   file_driver_enabled         = true
-  snapshot_controller_enabled = true
+  snapshot_controller_enabled = false
 
   # Other features
   enable_maintenance_window = false
-  image_cleaner_enabled     = true
-
-  tags = local.tags
+  tags                      = local.tags
 
 }
-

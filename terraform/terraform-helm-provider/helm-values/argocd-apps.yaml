@@ -1,6 +1,11 @@
+## Chart source : https://artifacthub.io/packages/helm/argo/argocd-apps
+
 # -- Deploy Argo CD Applications within this helm release
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
 applications:
+- name: platform-engineering
+  namespace: argocd
+  project: default
   sources:
    - repoURL: https://github.com/ishuar/platform-engineering.git
      path: argocd
@@ -11,22 +16,20 @@ applications:
   syncPolicy:
     automated:
       prune: false
-      selfHeal: false
+      selfHeal: true
   revisionHistoryLimit: null
   ignoreDifferences:
   info:
   - name: 'url_for_readme'
-    value: https://argoproj.github.io/
+    value: https://github.com/ishuar/platform-engineering/blob/main/argocd/README.md
 
 # -- Deploy Argo CD Projects within this helm release
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
 projects:
 - name: platform-engineering
   namespace: argocd
-  additionalLabels:
-    github_repo: "github.com/ishuar/platform-engineering"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  description: Project for all applications involved in the platform-engineering project.
+  description: Project for all applications involved in the platform-engineering tasks.
   sourceRepos:
   - 'https://github.com/ishuar/platform-engineering.git'

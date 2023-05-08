@@ -20,8 +20,8 @@ spec:
 
     # Sources field specifies the list of sources for the application
   sources:
-    - repoURL: https://kubernetes-sigs.github.io/external-dns/  # Can point to either a Helm chart repo or a git repo.
-      targetRevision: 1.12.1  # For Helm, this refers to the chart version.
+    - repoURL: oci://registry-1.docker.io/bitnamicharts/external-dns # Can point to either a Helm chart repo or a git repo.
+      targetRevision: 6.18.0  # For Helm, this refers to the chart version.
       chart: external-dns # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
       helm:
         # Helm values files for overriding values in the helm chart

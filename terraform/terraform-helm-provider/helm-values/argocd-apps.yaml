@@ -30,8 +30,14 @@ projects:
   namespace: argocd
   description: Project for all applications involved in the platform-engineering tasks.
   sourceRepos:
-  - 'https://github.com/ishuar/platform-engineering.git'
+  - '*'
   destinations:
-   - server: https://kubernetes.default.svc
+  - server: https://kubernetes.default.svc
+    namepsace: '*'
+  - namespace: '!kube-system'
+    server: https://kubernetes.default.svc
   sourceNamespaces:
-   - argocd
+  - argocd
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

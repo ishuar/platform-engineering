@@ -11,3 +11,8 @@ resources:
   - ./apps/cert-manager/application.yaml
   - ./apps/cert-manager/clusterissuer.yaml
   - ./apps/cert-manager/externalsecret.yaml
+  - ./apps/crossplane/application.yaml
+  - ./apps/crossplane/configmap-template.yaml
+  - ./apps/crossplane/externalsecret.yaml
+  - ./apps/crossplane/providerconfig.yaml
+  - ./apps/crossplane/pvc.yaml

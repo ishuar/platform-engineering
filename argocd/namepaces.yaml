@@ -19,3 +19,10 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
   name: cert-manager
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  name: crossplane

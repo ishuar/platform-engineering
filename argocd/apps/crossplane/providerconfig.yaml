@@ -1,0 +1,14 @@
+apiVersion: azure.upbound.io/v1beta1
+metadata:
+  name: crossplane-azure
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+  namespace: crossplane
+kind: ProviderConfig
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane
+      name: crossplane-azure-secret
+      key: azure.json

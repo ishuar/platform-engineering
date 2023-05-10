@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: crossplane
+spec:
+  project: platform-engineering
+  sources:
+    - repoURL: https://charts.crossplane.io/stable
+      targetRevision: 1.13.0-rc.0.69.ge40d04c6
+      chart: crossplane
+      helm:
+        # Helm values files for overriding values in the helm chart
+        valueFiles:
+        - $values/argocd/apps/crossplane/argo-values.yaml
+        skipCrds: false
+    - repoURL: 'https://github.com/ishuar/platform-engineering'
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane
+  info:
+    - name: 'crossplane-chart-values'
+      value: 'https://artifacthub.io/packages/helm/crossplane/crossplane'
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - PrunePropagationPolicy=foreground
+  revisionHistoryLimit: 10

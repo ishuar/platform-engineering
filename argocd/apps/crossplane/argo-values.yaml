@@ -1,0 +1,6 @@
+provider:
+  - provider-azure
+configuration:
+  - xpkg.upbound.io/upbound/provider-azure:v0.20.0
+packageCache:
+  pvc: crossplan-package-cache

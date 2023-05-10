@@ -1,4 +1,5 @@
-##? ref: https://cert-manager.io/v1.0-docs/configuration/acme/dns01/azuredns/
+##? ref: Azure DNS config: https://cert-manager.io/v1.0-docs/configuration/acme/dns01/azuredns/
+##? ref: LetsEncrypt Staging: https://letsencrypt.org/docs/staging-environment/
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -25,6 +26,34 @@ spec:
           clientID: d504f8c9-4fb9-4b0a-94b1-a27b2740711c
           clientSecretSecretRef:
             key: externaldnsclientsecret # using the same from externalDNS for DNS challenges.
+            name: cert-manager-dns01-azure-secret
+          environment: AzurePublicCloud
+          hostedZoneName: worldofcontainers.tk ## Use you domain
+          resourceGroupName: rg-aks-mgmt-platform-engineering ## Resource Group where DNS zone is created
+          subscriptionID: be01e8d6-72e0-4c3d-b7ae-afd4aa1224e6
+          tenantID: 9c1de352-64a4-4509-b3fc-4ef2df8db9b8
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  acme:
+    email: ishansharma887@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+    - dns01:
+        azureDNS:
+          clientID: d504f8c9-4fb9-4b0a-94b1-a27b2740711c
+          clientSecretSecretRef:
+            key: externaldnsclientsecret
             name: cert-manager-dns01-azure-secret
           environment: AzurePublicCloud
           hostedZoneName: worldofcontainers.tk ## Use you domain

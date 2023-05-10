@@ -43,6 +43,29 @@ resource "azurerm_key_vault_secret" "spn_password" {
   ]
 }
 
+##? Secrets for External DNS
+resource "azurerm_key_vault_secret" "external_dns_client_id" {
+
+  name         = "externaldnsclientid"
+  content_type = "username"
+  key_vault_id = azurerm_key_vault.management_cluster.id
+  value        = azuread_service_principal.this["platform-engineering-dns-admin"].id
+
+  depends_on = [
+    azurerm_role_assignment.key_vault_admin_current_user
+  ]
+}
+resource "azurerm_key_vault_secret" "external_dns_client_secret" {
+
+  name         = "externaldnsclientsecret"
+  content_type = "password"
+  key_vault_id = azurerm_key_vault.management_cluster.id
+  value        = azuread_service_principal_password.this["platform-engineering-dns-admin"].id
+
+  depends_on = [
+    azurerm_role_assignment.key_vault_admin_current_user
+  ]
+}
 ##? Allow app registration to control DNS zone for external-DNS
 resource "azurerm_role_assignment" "dns_admin" {
   scope                = azurerm_dns_zone.worldofcontainers_tk.id

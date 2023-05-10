@@ -32,7 +32,7 @@ projects:
   - '*'
   destinations:
   - server: https://kubernetes.default.svc
-    namepsace: '*'
+    namespace: '*'
   sourceNamespaces:
   - argocd
   clusterResourceWhitelist:

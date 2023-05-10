@@ -1,3 +1,4 @@
+#? values source : https://artifacthub.io/packages/helm/bitnami/external-dns
 provider: azure
 azure:
   secretName: external-dns-secret-cluster

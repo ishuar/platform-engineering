@@ -28,31 +28,10 @@ spec:
         valueFiles:
         - $values/argocd/apps/external-dns/argo-values.yaml
         skipCrds: false
-
+      ##? When using a upstream chart with values from custom repo
     - repoURL: 'https://github.com/ishuar/platform-engineering'
       targetRevision: main
       ref: values
-
-      # # plugin specific config
-      # plugin:
-      #   # If the plugin is defined as a sidecar and name is not passed, the plugin will be automatically matched with the
-      #   # Application according to the plugin's discovery rules.
-      #   name: mypluginname
-      #   # environment variables passed to the plugin
-      #   env:
-      #     - name: FOO
-      #       value: bar
-      #   # Plugin parameters are new in v2.5.
-      #   parameters:
-      #     - name: string-param
-      #       string: example-string
-      #     - name: array-param
-      #       array: [item1, item2]
-      #     - name: map-param
-      #       map:
-      #         param-name: param-value
-
-
 
   # Destination cluster and namespace to deploy the application
   destination:

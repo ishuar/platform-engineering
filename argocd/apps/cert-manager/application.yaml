@@ -36,3 +36,11 @@ spec:
     syncOptions:
     - PrunePropagationPolicy=foreground
   revisionHistoryLimit: 10
+  ##? ref:  https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
+  ## group:  Kubernetes API group without the version
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: cert-manager-webhook
+      jqPathExpressions:
+      - .webhooks[0].namespaceSelector.matchExpressions[] | select(.key == "control-plane")

@@ -2,14 +2,34 @@
 configs:
   params:
     server.insecure: true
+  cm:
+    # Dex configuration
+    ##? Secret can be used in this way. ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/user-management/index.md#alternative
+    ## clientSecret: $dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
+    url: https://argocd.worldofcontainers.tk
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
+            orgs:
+            - name: CLOUDETEER
+              teams:
+                - chapter-kubernetes
+
   ##? ⚠️ Argo is stupid and does not support oci repo out of the box, flux is better 😬
   repositories:
-  - name: bitnami-external-dns
-    url: registry-1.docker.io/bitnamicharts
-    type: helm
-    enableOCI: "true"
-    username: ${DOCKER_LOGIN_ID}
-    password: ${DOCKER_LOGIN_PASSWORD}
+    bitnami-external-dns:
+      name: bitnamicharts
+      url: registry-1.docker.io/bitnamicharts
+      type: helm
+      enableOCI: 'true'
+      username: '${DOCKER_LOGIN_ID}'
+      password: '${DOCKER_LOGIN_PASSWORD}'
+
 global:
   image:
     tag: v2.7.1

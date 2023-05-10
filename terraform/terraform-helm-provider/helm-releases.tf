@@ -31,6 +31,8 @@ resource "helm_release" "argocd" {
       {
         DOCKER_LOGIN_ID       = var.DOCKER_LOGIN_ID
         DOCKER_LOGIN_PASSWORD = var.DOCKER_LOGIN_PASSWORD
+        GITHUB_CLIENT_ID      = var.GITHUB_CLIENT_ID
+        GITHUB_CLIENT_SECRET  = var.GITHUB_CLIENT_SECRET
       }
     )
   ]

@@ -31,8 +31,8 @@ spec:
       value: 'https://artifacthub.io/packages/helm/cert-manager/external-secrets'
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: false
+      prune: false
+      selfHeal: true
     syncOptions:
     - PrunePropagationPolicy=foreground
   revisionHistoryLimit: 10

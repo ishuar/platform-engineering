@@ -5,9 +5,11 @@ configs:
   ##? ⚠️ Argo is stupid and does not support oci repo out of the box, flux is better 😬
   repositories:
   - name: bitnami-external-dns
-    url: registry-1.docker.io/bitnamicharts/external-dns
+    url: registry-1.docker.io/bitnamicharts
     type: helm
     enableOCI: "true"
+    username: ${DOCKER_LOGIN_ID}
+    password: ${DOCKER_LOGIN_PASSWORD}
 global:
   image:
     tag: v2.7.1
@@ -35,10 +37,10 @@ server:
     ## Secrets must be manually created in the namespace
     hosts:
       - argocd.worldofcontainers.tk
-    tls: []
-      # - secretName: your-certificate-name
-      #   hosts:
-      #     - argocd.worldofcontainers.tk
+    tls:
+    - secretName: argocd-tls-secret
+      hosts:
+        - argocd.worldofcontainers.tk
 ## ApplicationSet controller
 applicationSet:
   # -- Enable ApplicationSet controller

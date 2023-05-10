@@ -27,7 +27,12 @@ resource "helm_release" "argocd" {
 
   ## Why using file() with values -> https://github.com/hashicorp/terraform-provider-helm/issues/838
   values = [
-    file("${path.module}/helm-values/argo-cd.yaml")
+    templatefile("${path.module}/helm-values/argo-cd.yaml",
+      {
+        DOCKER_LOGIN_ID       = var.DOCKER_LOGIN_ID
+        DOCKER_LOGIN_PASSWORD = var.DOCKER_LOGIN_PASSWORD
+      }
+    )
   ]
 
 }

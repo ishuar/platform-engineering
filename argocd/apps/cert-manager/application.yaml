@@ -4,7 +4,7 @@ metadata:
   name: cert-manager
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   labels:
@@ -34,6 +34,5 @@ spec:
       prune: true
       selfHeal: false
     syncOptions:
-    - CreateNamespace=true
     - PrunePropagationPolicy=foreground
   revisionHistoryLimit: 10

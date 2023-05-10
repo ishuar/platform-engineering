@@ -4,9 +4,9 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.55"
     }
-    helm = {
-      source  = "hashicorp/helm"
-      version = "~> 2.9"
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "~> 2.38"
     }
   }
 }

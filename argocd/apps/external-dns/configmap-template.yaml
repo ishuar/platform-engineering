@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: external-dns-config-tpl
-  namespace: external-secrets-operator
+  namespace: external-dns
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 data:

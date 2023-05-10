@@ -16,7 +16,7 @@ applications:
   syncPolicy:
     automated:
       prune: false
-      selfHeal: true
+      selfHeal: false
   revisionHistoryLimit: null
   info:
   - name: 'README'

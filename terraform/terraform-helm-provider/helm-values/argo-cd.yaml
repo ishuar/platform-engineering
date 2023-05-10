@@ -2,10 +2,15 @@
 configs:
   params:
     server.insecure: true
+  rbac:
+    policy.csv: |
+      g, startdevopswithme:ArgoCDAdmins, role:admin
+      g, startdevopswithme:ArgoCDReadOnly, role:readonly
   cm:
     # Dex configuration
     ##? Secret can be used in this way. ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/user-management/index.md#alternative
     ## clientSecret: $dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
+    ## https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#1-register-the-application-in-the-identity-provider
     url: https://argocd.worldofcontainers.tk
     dex.config: |
       connectors:
@@ -16,9 +21,10 @@ configs:
             clientID: ${GITHUB_CLIENT_ID}
             clientSecret: ${GITHUB_CLIENT_SECRET}
             orgs:
-            - name: CLOUDETEER
+            - name: startdevopswithme
               teams:
-                - chapter-kubernetes
+                - ArgoCDAdmins
+                - ArgoCDReadOnly
 
   ##? ⚠️ Argo is stupid and does not support oci repo out of the box, flux is better 😬
   repositories:
@@ -76,4 +82,3 @@ crds:
   # -- Keep CRDs on chart uninstall
   # -- remove as the terraform is not able to install again if release is uninstalled and crds are left.
   keep: false
-

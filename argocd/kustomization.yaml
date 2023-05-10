@@ -7,3 +7,6 @@ resources:
   - ./apps/external-dns/application.yaml
   - ./apps/external-dns/configmap-template.yaml
   - ./apps/external-dns/externalsecret.yaml
+  - ./apps/cert-manager/application.yaml
+  - ./apps/cert-manager/clusterissuer.yaml
+  - ./apps/cert-manager/externalsecret.yaml

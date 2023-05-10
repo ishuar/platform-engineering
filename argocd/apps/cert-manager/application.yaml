@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: cert-manager
+spec:
+  project: platform-engineering
+  sources:
+    - repoURL: https://charts.jetstack.io
+      targetRevision: 1.11.1
+      chart: cert-manager
+      helm:
+        # Helm values files for overriding values in the helm chart
+        valueFiles:
+        - $values/argocd/apps/cert-manager/argo-values.yaml
+        skipCrds: false
+    - repoURL: 'https://github.com/ishuar/platform-engineering'
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  info:
+    - name: 'cert-manager-chart-values'
+      value: 'https://artifacthub.io/packages/helm/cert-manager/external-secrets'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+  revisionHistoryLimit: 10

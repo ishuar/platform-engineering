@@ -1,0 +1,18 @@
+##? ref : https://external-secrets.io/v0.4.4/guides-templating/#templatefrom
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: external-dns-config-tpl
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+data:
+  config.yaml: |
+    azure.json: |-
+      {
+        "tenantId": "9c1de352-64a4-4509-b3fc-4ef2df8db9b8",
+        "subscriptionId": "be01e8d6-72e0-4c3d-b7ae-afd4aa1224e6",
+        "resourceGroup": "rg-aks-mgmt-platform-engineering",
+        "aadClientId":  "{{ .externaldnsclientid }}",
+        "aadClientSecret": "{{ .externaldnsclientsecret }}"
+      }

@@ -4,4 +4,6 @@ kind: Kustomization
 resources:
   - ./apps/external-secrets-operator/application.yaml
   - ./apps/external-secrets-operator/secretstore.yaml
-  # - ./apps/external-dns/application.yaml
+  - ./apps/external-dns/application.yaml
+  - ./apps/external-dns/configmap-template.yaml
+  - ./apps/external-dns/externalsecret.yaml

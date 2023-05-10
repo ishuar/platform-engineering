@@ -2,6 +2,12 @@
 configs:
   params:
     server.insecure: true
+  ##? ⚠️ Argo is stupid and does not support oci repo out of the box, flux is better 😬
+  repositories:
+  - name: bitnami-external-dns
+    url: registry-1.docker.io/bitnamicharts/external-dns
+    type: helm
+    enableOCI: "true"
 global:
   image:
     tag: v2.7.1

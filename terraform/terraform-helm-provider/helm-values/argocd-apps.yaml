@@ -5,7 +5,7 @@
 applications:
 - name: platform-engineering
   namespace: argocd
-  project: default
+  project: platform-engineering
   source:
     repoURL: https://github.com/ishuar/platform-engineering.git
     path: argocd
@@ -18,7 +18,6 @@ applications:
       prune: false
       selfHeal: true
   revisionHistoryLimit: null
-  ignoreDifferences:
   info:
   - name: 'README'
     value: https://github.com/ishuar/platform-engineering/blob/main/argocd/README.md

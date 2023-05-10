@@ -60,7 +60,7 @@ resource "azurerm_key_vault_secret" "external_dns_client_secret" {
   name         = "externaldnsclientsecret"
   content_type = "password"
   key_vault_id = azurerm_key_vault.management_cluster.id
-  value        = azuread_service_principal_password.this["platform-engineering-dns-admin"].id
+  value        = azuread_service_principal_password.this["platform-engineering-dns-admin"].value
 
   depends_on = [
     azurerm_role_assignment.key_vault_admin_current_user

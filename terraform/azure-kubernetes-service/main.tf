@@ -4,7 +4,6 @@ resource "azurerm_resource_group" "management_cluster" {
   tags     = local.tags
 }
 
-## Minimal Example with disabled Autoscaling and disabled monitor diagnostic setting
 module "management_cluster" {
   source  = "ishuar/aks/azure"
   version = "1.3.1"

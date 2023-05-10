@@ -1,0 +1,102 @@
+{
+  "vs-kubernetes": {
+    "vscode-kubernetes.helm-path.mac": "~/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+    "vscode-kubernetes.minikube-path.mac": "~/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+    "vscode-kubernetes.kubectl-path.mac": "~/.vs-kubernetes/tools/kubectl/kubectl",
+    "vs-kubernetes.crd-code-completion": "enabled"
+  },
+  "redhat.telemetry.enabled": true,
+  "git.autofetch": true,
+  "workbench.preferredDarkColorTheme": "Cobalt2",
+  "workbench.colorTheme": "Dracula Soft",
+  "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  "git.suggestSmartCommit": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.formatOnSave": true,
+  "json.schemas": [],
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "tabnine.experimentalAutoImports": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "githubPullRequests.fileListLayout": "flat",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true
+  },
+  "git.confirmSync": false,
+  "editor.suggest.showMethods": true,
+  "editor.suggest.preview": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "git.ignoreRebaseWarning": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "githubPullRequests.pullBranch": "never",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.ansible"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "window.zoomLevel": 1,
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "editor.renderWhitespace": "none",
+  "editor.codeActionsOnSave": {},
+  "helm-intellisense.customValueFileNames": [
+    "values.yaml"
+  ],
+  "editor.formatOnPaste": true,
+  "yaml.format.bracketSpacing": false,
+  "terraform.experimentalFeatures.prefillRequiredFields": true,
+  "terraform.experimentalFeatures.validateOnSave": true,
+  "azureTerraform.terminal": "integrated",
+  "azureTerraform.test.location": "westeurope",
+  "pythonIndent.trimLinesWithOnlyWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "gitlens.blame.ignoreWhitespace": true,
+  "git.enableCommitSigning": true,
+  "git-graph.repository.commits.showSignatureStatus": true,
+  "git-graph.repository.sign.commits": true,
+  "git-graph.repository.sign.tags": true,
+  "terminal.integrated.fontSize": 13,
+  "editor.formatOnType": true,
+  "python.formatting.provider": "black",
+  "yaml.format.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "markdown.extension.tableFormatter.delimiterRowNoPadding": true
+}

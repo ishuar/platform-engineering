@@ -16,7 +16,6 @@ spec:
     chart: external-secrets
     targetRevision: 0.8.1
     helm:
-      # values: |
       skipCrds: false
   destination:
     server: https://kubernetes.default.svc
@@ -29,6 +28,5 @@ spec:
       prune: true
       selfHeal: false
     syncOptions:
-    - CreateNamespace=true
     - PrunePropagationPolicy=foreground
   revisionHistoryLimit: 10

@@ -33,8 +33,6 @@ projects:
   destinations:
   - server: https://kubernetes.default.svc
     namepsace: '*'
-  - namespace: '!kube-system'
-    server: https://kubernetes.default.svc
   sourceNamespaces:
   - argocd
   clusterResourceWhitelist:

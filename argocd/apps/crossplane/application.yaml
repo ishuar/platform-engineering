@@ -13,7 +13,7 @@ spec:
   project: platform-engineering
   sources:
     - repoURL: https://charts.crossplane.io/stable
-      targetRevision: 1.13.0-rc.0.69.ge40d04c6
+      targetRevision: 1.12.1
       chart: crossplane
       helm:
         # Helm values files for overriding values in the helm chart

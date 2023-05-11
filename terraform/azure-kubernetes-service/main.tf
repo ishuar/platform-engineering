@@ -18,7 +18,7 @@ module "management_cluster" {
   default_node_pool_name                = "system"
   default_node_pool_enable_auto_scaling = true
   default_node_pool_vm_size             = "standard_d2s_v5"
-  default_node_pool_node_count          = 1
+  default_node_pool_node_count          = 2
   default_node_pool_min_count           = 1
   default_node_pool_max_count           = 2
 

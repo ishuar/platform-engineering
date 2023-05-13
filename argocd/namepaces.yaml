@@ -1,3 +1,5 @@
+##? Available in AKS already , ref: https://learn.microsoft.com/en-us/azure/aks/faq#what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed
+##? ref for annotations : https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#configuration-annotation-format
 ---
 apiVersion: v1
 kind: Namespace
@@ -11,6 +13,8 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
+    scheduler.alpha.kubernetes.io/node-selector: "crossplane=false"
+    scheduler.alpha.kubernetes.io/node-selector": "agentpool=system"
   name: external-dns
 ---
 apiVersion: v1
@@ -18,6 +22,8 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
+    scheduler.alpha.kubernetes.io/node-selector: "crossplane=false"
+    scheduler.alpha.kubernetes.io/node-selector": "agentpool=system"
   name: cert-manager
 ---
 apiVersion: v1
@@ -25,4 +31,6 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
+    scheduler.alpha.kubernetes.io/node-selector: "crossplane=true"
+    scheduler.alpha.kubernetes.io/node-selector": "agentpool=crossplane"
   name: crossplane

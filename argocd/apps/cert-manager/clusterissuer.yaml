@@ -25,7 +25,7 @@ spec:
         azureDNS:
           clientID: d504f8c9-4fb9-4b0a-94b1-a27b2740711c
           clientSecretSecretRef:
-            key: externaldnsclientsecret # using the same from externalDNS for DNS challenges.
+            key: spn-platform-engineering-dns-admin-clientsecret # using the same from externalDNS for DNS challenges.
             name: cert-manager-dns01-azure-secret
           environment: AzurePublicCloud
           hostedZoneName: worldofcontainers.tk ## Use you domain

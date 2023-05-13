@@ -14,7 +14,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
     scheduler.alpha.kubernetes.io/node-selector: "crossplane=false"
-    scheduler.alpha.kubernetes.io/node-selector": "agentpool=system"
   name: external-dns
 ---
 apiVersion: v1
@@ -23,7 +22,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
     scheduler.alpha.kubernetes.io/node-selector: "crossplane=false"
-    scheduler.alpha.kubernetes.io/node-selector": "agentpool=system"
   name: cert-manager
 ---
 apiVersion: v1
@@ -32,5 +30,4 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
     scheduler.alpha.kubernetes.io/node-selector: "crossplane=true"
-    scheduler.alpha.kubernetes.io/node-selector": "agentpool=crossplane"
   name: crossplane

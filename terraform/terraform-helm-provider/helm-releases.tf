@@ -1,18 +1,52 @@
+##? Namespaces Created via terraform explicitly to apply PodNodeSelector using
+##? Available in AKS already , ref: https://learn.microsoft.com/en-us/azure/aks/faq#what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed
+##? ref for annotations : https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#configuration-annotation-format
+resource "kubernetes_namespace_v1" "nginx_controller" {
+  metadata {
+    annotations = {
+      "scheduler.alpha.kubernetes.io/node-selector" : "crossplane=false"
+      "scheduler.alpha.kubernetes.io/node-selector" : "agentpool=system"
+    }
+    labels = {
+      "crossplane" = "false"
+    }
+    name = "ingress-nginx-controller"
+  }
+}
+
+resource "kubernetes_namespace_v1" "argocd" {
+  metadata {
+    annotations = {
+      "scheduler.alpha.kubernetes.io/node-selector" : "crossplane=false"
+      "scheduler.alpha.kubernetes.io/node-selector" : "agentpool=system"
+    }
+    labels = {
+      "crossplane" = "false"
+    }
+    name = "argocd"
+  }
+}
+
 resource "helm_release" "nginx_controller" {
   name             = "ingress-nginx-controller"
   repository       = "https://kubernetes.github.io/ingress-nginx"
   chart            = "ingress-nginx"
   version          = "4.6.1"
-  create_namespace = true
-  namespace        = "ingress-nginx-controller"
+  create_namespace = false
+  namespace        = kubernetes_namespace_v1.nginx_controller.metadata.0.name
   atomic           = true
 
+  ## Why using file() with values -> https://github.com/hashicorp/terraform-provider-helm/issues/838
+  values = [
+    file("${path.module}/helm-values/ingress-nginx.yaml")
+  ]
   ## This is required for ingress-controller to work after Behavioral Changes
   ## https://github.com/Azure/AKS/releases/tag/2022-09-11
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-health-probe-request-path"
-    value = "/healthz"
-  }
+  ## Coming from values file.
+  # set {
+  #   name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-health-probe-request-path"
+  #   value = "/healthz"
+  # }
 }
 
 resource "helm_release" "argocd" {
@@ -20,8 +54,8 @@ resource "helm_release" "argocd" {
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
   version          = "5.32"
-  create_namespace = true
-  namespace        = "argocd"
+  create_namespace = false
+  namespace        = kubernetes_namespace_v1.argocd.metadata.0.name
   atomic           = true
 
 

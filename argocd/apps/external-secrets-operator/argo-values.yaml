@@ -1,0 +1,8 @@
+## ref:https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview#pod-labels
+## tutorial: https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity
+podLabels:
+  azure.workload.identity/use: true
+nodeSelector:
+  node_usage: base_components
+  crossplane: "false"
+  agentpool: system

@@ -11,12 +11,25 @@ metadata:
     name: external-secrets-operator
 spec:
   project: platform-engineering
-  source:
-    repoURL: https://charts.external-secrets.io
-    chart: external-secrets
-    targetRevision: 0.8.1
-    helm:
-      skipCrds: false
+  sources:
+    # repoURL: https://charts.external-secrets.io
+    # chart: external-secrets
+    # targetRevision: 0.8.1
+    # helm:
+    #   skipCrds: false
+
+    - repoURL: https://charts.external-secrets.io
+      targetRevision: 0.8.1
+      chart: external-secrets
+      helm:
+        # Helm values files for overriding values in the helm chart
+        valueFiles:
+        - $values/argocd/apps/external-secrets-operator/argo-values.yaml
+        skipCrds: false
+      ##? When using a upstream chart with values from custom repo
+    - repoURL: 'https://github.com/ishuar/platform-engineering'
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: external-secrets-operator

@@ -19,7 +19,6 @@ resource "kubernetes_namespace_v1" "external_secrets_operator" {
   metadata {
     annotations = {
       "scheduler.alpha.kubernetes.io/node-selector" : "crossplane=false"
-      "scheduler.alpha.kubernetes.io/node-selector" : "agentpool=system"
     }
     labels = {
       "crossplane" = "false"
@@ -34,12 +33,12 @@ resource "kubernetes_service_account_v1" "external_secrets_operator" {
     labels = {
       "app.kubernetes.io/name" : "external-secrets-operator"
       "azure.workload.identity/use" : "true"
-      "azure.workload.identity/tenant-id" : data.azurerm_client_config.current.tenant_id
     }
     name      = var.external_secrets_operator_service_account_name
     namespace = kubernetes_namespace_v1.external_secrets_operator.metadata.0.name
     annotations = {
       "azure.workload.identity/client-id" : "${azurerm_user_assigned_identity.external_secrets_operator.client_id}"
+      "azure.workload.identity/tenant-id" : data.azurerm_client_config.current.tenant_id
     }
   }
 }

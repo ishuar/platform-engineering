@@ -5,7 +5,6 @@ resource "kubernetes_namespace_v1" "nginx_controller" {
   metadata {
     annotations = {
       "scheduler.alpha.kubernetes.io/node-selector" : "crossplane=false"
-      "scheduler.alpha.kubernetes.io/node-selector" : "agentpool=system"
     }
     labels = {
       "crossplane" = "false"
@@ -18,7 +17,6 @@ resource "kubernetes_namespace_v1" "argocd" {
   metadata {
     annotations = {
       "scheduler.alpha.kubernetes.io/node-selector" : "crossplane=false"
-      "scheduler.alpha.kubernetes.io/node-selector" : "agentpool=system"
     }
     labels = {
       "crossplane" = "false"

@@ -37,9 +37,7 @@ configs:
       password: '${DOCKER_LOGIN_PASSWORD}'
 global:
   nodeSelector:
-    node_usage: base_components
     crossplane: "false"
-    agentpool: system
   image:
     tag: v2.7.1
 server:

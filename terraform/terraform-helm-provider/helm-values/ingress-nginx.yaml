@@ -1,9 +1,7 @@
 ##? ref values : https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
 controller:
   nodeSelector:
-    crossplane: 'false'
-    agentpool: system
-    node_usage: base_components
+    crossplane: "false"
   ##! This is required for ingress-controller to work after Behavioral Changes
   ##! https://github.com/Azure/AKS/releases/tag/2022-09-11
   service:

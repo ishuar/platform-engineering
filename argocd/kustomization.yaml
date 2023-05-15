@@ -15,4 +15,5 @@ resources:
   - ./apps/crossplane/configmap-template.yaml
   - ./apps/crossplane/externalsecret.yaml
   - ./apps/crossplane/providerconfig.yaml
-  - ./apps/crossplane/pvc.yaml
+  # - ./apps/crossplane/pvc.yaml
+  - ./apps/azure-infrastructure-crossplane/application.yaml

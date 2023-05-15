@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: azure-infrastructure-via-crossplane
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: azure-infrastructure-via-crossplane
+spec:
+  project: platform-engineering
+  source:
+    repoURL: https://github.com/ishuar/platform-engineering
+    targetRevision: HEAD
+    path: argocd/crossplane/azure
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: azure-infrastructure
+  info:
+    - name: 'azure-upbound-official-provider'
+      value: 'https://marketplace.upbound.io/providers/upbound/provider-azure/v0.31.0'
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+  revisionHistoryLimit: 10

@@ -10,7 +10,7 @@ metadata:
 data:
   azure.json: |-
     {
-      "clientId": "{{ .crossplaneclientid }},
+      "clientId": "{{ .crossplaneclientid }}",
       "clientSecret": "{{ .crossplaneclientsecret }}",
       "subscriptionId": "be01e8d6-72e0-4c3d-b7ae-afd4aa1224e6",
       "tenantId": "9c1de352-64a4-4509-b3fc-4ef2df8db9b8",

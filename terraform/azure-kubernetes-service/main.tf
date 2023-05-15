@@ -11,9 +11,13 @@ module "management_cluster" {
   location            = azurerm_resource_group.management_cluster.location
   resource_group_name = azurerm_resource_group.management_cluster.name
   name                = "mgmt-cluster-${local.tags["github_repo"]}"
-  sku_tier            = "Standard"
   dns_prefix          = "managementcluster"
   kubernetes_version  = "1.26.3"
+
+  ##! Azure resource helalth update, The managed cluster control plane has been overloaded and automatically
+  ##! restarted. This might impact the availability of your cluster. Update to standard SKU
+  sku_tier = "Standard"
+
 
   ## Default node pool
   default_node_pool_name                = "system"

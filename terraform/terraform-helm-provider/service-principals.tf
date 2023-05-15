@@ -27,8 +27,6 @@ resource "azuread_service_principal_password" "this" {
   service_principal_id = azuread_service_principal.this[each.value].id
 }
 
-
-
 # #######
 # ## ROLE ASSIGNMENTS
 # #######

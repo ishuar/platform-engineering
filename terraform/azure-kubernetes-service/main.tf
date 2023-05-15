@@ -11,6 +11,7 @@ module "management_cluster" {
   location            = azurerm_resource_group.management_cluster.location
   resource_group_name = azurerm_resource_group.management_cluster.name
   name                = "mgmt-cluster-${local.tags["github_repo"]}"
+  sku_tier            = "Standard"
   dns_prefix          = "managementcluster"
   kubernetes_version  = "1.26.3"
 

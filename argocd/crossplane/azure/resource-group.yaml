@@ -5,5 +5,6 @@ metadata:
 spec:
   forProvider:
     location: "West Europe"
+  ## the spec.providerConfigRef.name must match the ProviderConfig metadata.name value.
   providerConfigRef:
-    name: provider-azure
+    name: crossplane-azure

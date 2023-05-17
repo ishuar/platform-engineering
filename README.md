@@ -25,7 +25,7 @@
 <div align="center">
 
    <a href="https://github.com/ishuar/platform-engineering">
-    <img src="https://github.com/ishuar/platform-engineering/tree/main/.vscode/platform-engineering.png" alt="Logo" width="800" height="300">
+    <img src="https://github.com/ishuar/platform-engineering/blob/main/.vscode/extras/platform-engineering.png" alt="Logo" width="800" height="300">
   </a>
 
   <h1 align="center"><strong>Platform Engineering</strong></h1>
@@ -128,7 +128,7 @@ If you have any suggestion that would make this project better, feel free to  fo
 
 **⭐️Don't forget to give the project a star! Thanks again!⭐️**
 
-See [`CONTRIBUTING`](CONTRIBUTING) for more information.
+See [`CONTRIBUTING`](/CONTRIBUTING.md) for more information.
 
 <!-- LICENSE -->
 ## License

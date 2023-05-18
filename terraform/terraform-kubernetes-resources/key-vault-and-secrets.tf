@@ -17,6 +17,8 @@ resource "azurerm_key_vault" "management_cluster" {
       "Get", "Set", "Delete", "List"
     ]
   }
+
+  ## Read only access to external secrets operator to fetch the secrets value.
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = azurerm_user_assigned_identity.external_secrets_operator.principal_id

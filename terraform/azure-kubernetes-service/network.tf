@@ -15,7 +15,7 @@ resource "azurerm_subnet" "management_cluster" {
 
 ## Use a domain what you own.
 resource "azurerm_dns_zone" "worldofcontainers_tk" {
-  name                = "worldofcontainers.tk"
+  name                = "worldofcontainers.tk" ## replace this with a domain what you own.
   resource_group_name = azurerm_resource_group.management_cluster.name
   tags                = local.tags
 }

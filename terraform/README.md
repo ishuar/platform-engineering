@@ -12,8 +12,9 @@ Proactively, service principles and respective azure key vault secrets are creat
 
 ### Prerequisites
 
-- **Must Have**
 Before proceeding, make sure you have the following prerequisites installed and configured:
+
+- **Must Have**
 
   - [`Terraform`](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 

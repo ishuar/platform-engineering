@@ -43,7 +43,7 @@ terraform init
 terraform apply # use -auto-approve flag if need to auto approve the apply.
 ```
 
->> :warning: **IMPORTANT NOTE:** :warning: Must read Considerations !!
+:warning:**IMPORTANT NOTE:** Must read Considerations !! :warning:
 
 ### Considerations
 

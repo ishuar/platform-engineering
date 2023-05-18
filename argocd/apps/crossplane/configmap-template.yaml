@@ -12,8 +12,8 @@ data:
     {
       "clientId": "{{ .crossplaneclientid }}",
       "clientSecret": "{{ .crossplaneclientsecret }}",
-      "subscriptionId": "be01e8d6-72e0-4c3d-b7ae-afd4aa1224e6",
-      "tenantId": "9c1de352-64a4-4509-b3fc-4ef2df8db9b8",
+      "subscriptionId": "{{ .subscriptionid }}",
+      "tenantId": "{{ .tenantid }}",
       "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
       "resourceManagerEndpointUrl": "https://management.azure.com/",
       "activeDirectoryGraphResourceId": "https://graph.windows.net/",

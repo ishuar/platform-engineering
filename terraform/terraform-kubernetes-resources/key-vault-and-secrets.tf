@@ -51,3 +51,15 @@ resource "azurerm_key_vault_secret" "client_id" {
   key_vault_id = azurerm_key_vault.management_cluster.id
   value        = azuread_service_principal.this[each.value].application_id
 }
+
+resource "azurerm_key_vault_secret" "subscription_and_tenant_id" {
+  for_each = {
+    subscriptionid = data.azurerm_client_config.current.subscription_id
+    tenantid       = data.azurerm_client_config.current.tenant_id
+  }
+
+  name         = each.key
+  content_type = "generic"
+  key_vault_id = azurerm_key_vault.management_cluster.id
+  value        = each.value
+}

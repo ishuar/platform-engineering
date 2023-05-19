@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+## * This script checks if the kustomize binary is installed or not.
+## * If it is not installed then it checks if `brew` command is available or not.
+## * If brew is available then it installs kustomize via brew
+## * Otherwise it follows https://kubectl.docs.kubernetes.io/installation/kustomize/binaries/ to install kustomize.
+
 set -e
 
 INSTALLATION_DIR="$HOME/local/bin"

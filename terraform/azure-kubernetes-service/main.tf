@@ -65,3 +65,20 @@ module "management_cluster" {
   snapshot_controller_enabled           = false
   tags                                  = local.tags
 }
+
+
+##? Allow AKS to read and manage network resources inside in the Resource Group
+##? Required for nginx-ingress controller to use a existing PIP for LB.
+
+##! Reference error:
+### Error syncing load balancer: failed to ensure load balancer: Retriable: false, RetryAfter: 0s, HTTPStatusCode: 403, RawError: {"error":{"code":" │
+### │ AuthorizationFailed","message":"The client '<kubernetes_system_assigned_identity>' with object id '<kubernetes_system_assigned_identity>' does not have authorization t │
+### │ o perform action 'Microsoft.Network/publicIPAddresses/read' over scope '/subscriptions/<subscription_id>/resourceGroups/<rg_name_used_for_aks> │
+### │ /providers/Microsoft.Network' or the scope is invalid. If access was recently granted, please refresh your credentials."}}
+
+resource "azurerm_role_assignment" "aks_mi_network_contributor" {
+  scope                = azurerm_resource_group.management_cluster.id
+  role_definition_name = "Network Contributor"
+  principal_id         = module.management_cluster.azurerm_kubernetes_cluster.identity[0].principal_id
+}
+

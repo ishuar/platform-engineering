@@ -4,14 +4,14 @@ configs:
     server.insecure: true
   rbac:
     policy.csv: |
-      g, startdevopswithme:ArgoCDAdmins, role:admin
-      g, startdevopswithme:ArgoCDReadOnly, role:readonly
+      g, learndevopsdotin:ArgoCDAdmins, role:admin
+      g, learndevopsdotin:ArgoCDReadOnly, role:readonly
   cm:
     # Dex configuration
     ##? Secret can be used in this way. ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/user-management/index.md#alternative
     ## clientSecret: $dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
     ## https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#1-register-the-application-in-the-identity-provider
-    url: https://argocd.worldofcontainers.tk
+    url: https://${ARGOCD_INGRESS_FQDN}
     dex.config: |
       connectors:
         - type: github
@@ -21,7 +21,7 @@ configs:
             clientID: ${GITHUB_CLIENT_ID}
             clientSecret: ${GITHUB_CLIENT_SECRET}
             orgs:
-            - name: startdevopswithme
+            - name: learndevopsdotin
               teams:
                 - ArgoCDAdmins
                 - ArgoCDReadOnly
@@ -64,11 +64,11 @@ server:
     ## Hostnames must be provided if Ingress is enabled.
     ## Secrets must be manually created in the namespace
     hosts:
-      - argocd.worldofcontainers.tk
+      - ${ARGOCD_INGRESS_FQDN}
     tls:
     - secretName: argocd-tls-secret
       hosts:
-        - argocd.worldofcontainers.tk
+        - ${ARGOCD_INGRESS_FQDN}
 ## ApplicationSet controller
 applicationSet:
   # -- Enable ApplicationSet controller

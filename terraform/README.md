@@ -67,4 +67,3 @@ Known Issues on this subject:
 
 > - [AWS-EKS-Kubernetes cluster unreachable](https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1234)
 > - [Terraform invalid configuration: no configuration has been provided, try setting KUBERNETES_MASTER environment variable](https://github.com/Azure/AKS/issues/3495)
-

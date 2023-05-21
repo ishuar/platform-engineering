@@ -33,7 +33,7 @@ resource "azuread_service_principal_password" "this" {
 
 ##? Allow app registration to control DNS zone for external-DNS
 resource "azurerm_role_assignment" "dns_admin" {
-  scope                = data.azurerm_dns_zone.worldofcontainers_tk.id
+  scope                = data.azurerm_dns_zone.service_learndevops_in.id
   role_definition_name = "DNS Zone Contributor"
   principal_id         = azuread_service_principal.this["platform-engineering-dns-admin"].id
 }

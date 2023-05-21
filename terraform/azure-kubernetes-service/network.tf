@@ -14,8 +14,9 @@ resource "azurerm_subnet" "management_cluster" {
 }
 
 ## Use a domain what you own.
-resource "azurerm_dns_zone" "worldofcontainers_tk" {
-  name                = "worldofcontainers.tk" ## replace this with a domain what you own.
+## Public DNS Zone, configure forwarders for this sub-domain or root domain to the nameservers from this DNS zone on your domain registrar
+resource "azurerm_dns_zone" "service_learndevops_in" {
+  name                = "service.learndevops.in" ## replace this with a domain what you own.
   resource_group_name = azurerm_resource_group.management_cluster.name
   tags                = local.tags
 }

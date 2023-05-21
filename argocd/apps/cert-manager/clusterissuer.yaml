@@ -28,7 +28,7 @@ spec:
             key: spn-platform-engineering-dns-admin-clientsecret # using the same from externalDNS for DNS challenges.
             name: cert-manager-dns01-azure-secret
           environment: AzurePublicCloud
-          hostedZoneName: worldofcontainers.tk ## Use you domain
+          hostedZoneName: service.learndevops.in ## Use you domain
           resourceGroupName: rg-aks-mgmt-platform-engineering ## Resource Group where DNS zone is created
           subscriptionID: be01e8d6-72e0-4c3d-b7ae-afd4aa1224e6
           tenantID: 9c1de352-64a4-4509-b3fc-4ef2df8db9b8
@@ -56,7 +56,7 @@ spec:
             key: externaldnsclientsecret
             name: cert-manager-dns01-azure-secret
           environment: AzurePublicCloud
-          hostedZoneName: worldofcontainers.tk ## Use you domain
+          hostedZoneName: service.learndevops.in ## Use you domain
           resourceGroupName: rg-aks-mgmt-platform-engineering ## Resource Group where DNS zone is created
           subscriptionID: be01e8d6-72e0-4c3d-b7ae-afd4aa1224e6
           tenantID: 9c1de352-64a4-4509-b3fc-4ef2df8db9b8

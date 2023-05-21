@@ -8,7 +8,7 @@ data "azurerm_kubernetes_cluster" "management_cluster" {
   resource_group_name = "rg-aks-mgmt-${local.github_repo}"
 }
 
-data "azurerm_dns_zone" "worldofcontainers_tk" {
-  name                = "worldofcontainers.tk"
+data "azurerm_dns_zone" "service_learndevops_in" {
+  name                = "service.learndevops.in"
   resource_group_name = data.azurerm_kubernetes_cluster.management_cluster.resource_group_name
 }

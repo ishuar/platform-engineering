@@ -8,4 +8,4 @@ rbac:
 sources:
   - ingress
 domainFilters:
-  - worldofcontainers.tk
+  - service.learndevops.in

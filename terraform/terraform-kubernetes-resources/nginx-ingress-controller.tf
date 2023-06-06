@@ -23,7 +23,6 @@ resource "kubernetes_namespace_v1" "nginx_controller" {
   }
 }
 
-
 resource "helm_release" "nginx_controller" {
   name             = "ingress-nginx-controller"
   repository       = "https://kubernetes.github.io/ingress-nginx"

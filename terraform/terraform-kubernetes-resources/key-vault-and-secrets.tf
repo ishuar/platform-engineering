@@ -63,3 +63,4 @@ resource "azurerm_key_vault_secret" "subscription_and_tenant_id" {
   key_vault_id = azurerm_key_vault.management_cluster.id
   value        = each.value
 }
+

@@ -26,8 +26,15 @@ initlock: init
 fmt:
 	terraform fmt -recursive
 
-format:
-	terraform fmt -recursive
+format: fmt
+
+lock: initlock
 
 clean:
 	find . -type d -name ".terraform" -prune -exec rm -rf {} \;
+
+clean-all: clean
+	find . -name ".terraform.lock.hcl" -prune -exec rm -rf {} \;
+	az logout
+	az account clear
+

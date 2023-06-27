@@ -53,7 +53,7 @@ resource "helm_release" "argocd_bootstrap_app" {
   version          = "1.0"
   create_namespace = true
   namespace        = "argocd"
-  atomic           = true
+  atomic           = false
 
 
   ## Why using file() with values -> https://github.com/hashicorp/terraform-provider-helm/issues/838

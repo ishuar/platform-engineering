@@ -30,7 +30,7 @@ resource "helm_release" "nginx_controller" {
   version          = "4.6.1"
   create_namespace = false
   namespace        = kubernetes_namespace_v1.nginx_controller.metadata.0.name
-  atomic           = true
+  atomic           = false
 
   ## Why using file() with values -> https://github.com/hashicorp/terraform-provider-helm/issues/838
   values = [

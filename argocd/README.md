@@ -26,7 +26,7 @@ It is highly possible that even though after using sync-waves, argo applications
 5. ExternalSecrets: `external-dns-external-secret`, `cert-manager-external-secret` and `crossplane-external-secret`.
 6. ArgoCD Applications: `external-dns`, `cert-manager` and `crossplane`
 7. `ClusterIssuers`
-8. Crossplane Provider: `provider-azure` this may take and time and wait here untill this gets healthy.
+8. Crossplane Provider: `provider-azure` this may take time, wait here untill this gets healthy.
 9. Crossplane ProviderConfig: `crossplane-azure`.
 10. ArgoCD Application: `azure-infrastructure-via-crossplane` (has to be last)
 

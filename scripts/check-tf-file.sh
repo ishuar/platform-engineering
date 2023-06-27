@@ -10,8 +10,8 @@ DIR=${DIR:="$(pwd)"}
 
 for file in "$DIR"/*.tf; do
   if [[ ! -e "$file" ]]; then
-    ## \e[ starts the ANSI escape sequence, 1;31m specifies the formatting options (bold and red text), and \e[0m resets the text formatting to default. The \n adds a newline character at the end.
-    printf "\e[1;31mNo Terraform configuration available in the current directory\e[0m\n"
+    ## \e[ starts the ANSI escape sequence, 1;31m specifies the formatting options (bold and red text),%-6s is variable for the later part and \e[0m resets the text formatting to default. The \n adds a newline character at the end.
+    printf '\e[1;31m%-6s\e[0m\n' "No Terraform configuration available in the current directory"
     exit 200
   fi
 done

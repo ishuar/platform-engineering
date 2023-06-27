@@ -13,7 +13,7 @@ TEMP_SCRIPT_FILE="/tmp/install_kustomize.sh"
 echo "Check if kustomize is installed"
 
 if ! which kustomize >/dev/null; then
-  echo "Kustomize is not installed ..."
+  printf '\e[1;31m%-6s\e[0m\n' "Kustomize is not installed ..."
 
   if [ -x "$(command -v brew)" ]; then
     brew install kustomize
@@ -27,5 +27,5 @@ if ! which kustomize >/dev/null; then
   fi
 
 else
-  echo "kustomize is installed"
+  printf '\e[1;32m%-6s\e[0m\n' "kustomize is already installed !!"
 fi
